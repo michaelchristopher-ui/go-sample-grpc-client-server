@@ -1,4 +1,4 @@
-module proto
+module github.com/michaelchristopher-ui/go-sample-grpc-client-server/proto
 
 go 1.19
 
