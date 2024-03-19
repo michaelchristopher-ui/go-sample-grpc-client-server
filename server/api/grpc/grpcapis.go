@@ -2,7 +2,8 @@ package grpc
 
 import (
 	"context"
-	"go-sample-grpc-server/pkg/pb"
+
+	"github.com/michaelchristopher-ui/proto-test/sample/pb"
 
 	"google.golang.org/grpc"
 )

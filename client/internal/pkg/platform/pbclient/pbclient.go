@@ -6,7 +6,7 @@ import (
 	"go-sample-grpc-client/internal/pkg/core/adapter/pbclientadapter"
 	"log"
 
-	"github.com/michaelchristopher-ui/go-sample-grpc-client-server/proto/sample/pb"
+	"github.com/michaelchristopher-ui/proto-test/sample/pb"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"

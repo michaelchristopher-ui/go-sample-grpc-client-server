@@ -7,6 +7,10 @@ import (
 	"go-sample-grpc-server/internal/conf"
 	"log"
 	"net"
+	"os"
+	"os/signal"
+	"sync"
+	"syscall"
 
 	"google.golang.org/grpc"
 )
@@ -28,9 +32,24 @@ func main() {
 	grpcsrv := grpc.NewServer()
 
 	//Register APIs
+
 	apigrpc.API(grpcsrv)
 
+	termChan := make(chan os.Signal, 1)
+	signal.Notify(termChan, syscall.SIGINT, syscall.SIGTERM)
+	var wg sync.WaitGroup
 	//Start server
-	grpcsrv.Serve(lis)
-	//srv.StartServer()
+	wg.Add(1)
+	go func() {
+		log.Printf("Starting server at %s", lis.Addr())
+		grpcsrv.Serve(lis)
+		wg.Done()
+	}()
+	<-termChan
+	log.Print("Waiting for other waitgroups to finish")
+	wg.Wait()
+
+	//Stop Server
+	grpcsrv.GracefulStop()
+
 }

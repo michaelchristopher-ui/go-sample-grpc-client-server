@@ -18,6 +18,7 @@ require (
 
 require (
 	github.com/labstack/echo v3.3.10+incompatible
+	github.com/michaelchristopher-ui/proto-test v0.0.1
 	golang.org/x/net v0.20.0 // indirect
 	golang.org/x/sys v0.16.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
